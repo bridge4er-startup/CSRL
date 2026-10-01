@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Civil Structures Research Lab investigates resilient, efficient, and sustainable structural systems." />
+    <title>Civil Structures Research Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Civil Structures Research Lab home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>CSRL</strong><small>Civil Structures Research Lab</small></span>
+      </a>
+      <button class="menu-button" aria-label="Open navigation" aria-expanded="false">Menu</button>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#home" class="active">Home</a>
+        <a href="#research">Research</a>
+        <a href="#people">Contacts</a>
+        <a href="#contact" class="nav-contact">Work with us <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-image" role="img" aria-label="Reinforced concrete structural testing in a laboratory"></div>
+        <div class="hero-content page-width">
+          <p class="eyebrow">Structural research for a changing built world</p>
+          <h1>Evidence for stronger, lighter, <em>longer-lasting</em> structures.</h1>
+          <p class="hero-intro" id="hero-intro"></p>
+          <a href="#research" class="button button-light">Explore our research <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-data page-width">
+          <div><span>01</span><p>Concrete<br />structures</p></div>
+          <div><span>02</span><p>Steel &amp; rebar<br />testing</p></div>
+          <div><span>03</span><p>Material<br />optimization</p></div>
+          <div><span>04</span><p>Sustainable<br />construction</p></div>
+        </div>
+      </section>
+
+      <section class="statement page-width section-pad">
+        <p class="eyebrow dark">About the lab</p>
+        <div class="statement-grid">
+          <h2 id="about-title"></h2>
+          <div><p id="about-copy"></p><a href="#research" class="text-link">Our research areas <span>→</span></a></div>
+        </div>
+      </section>
+
+      <section class="feature-project">
+        <div class="feature-photo" role="img" aria-label="Concrete specimens ready for laboratory testing"></div>
+        <div class="feature-body">
+          <p class="eyebrow">Featured research</p>
+          <p class="feature-number" id="featured-number"></p>
+          <h2 id="featured-title"></h2>
+          <p id="featured-description"></p>
+          <a href="#research" class="text-link light">Read project abstract <span>→</span></a>
+        </div>
+      </section>
+
+      <section class="updates page-width section-pad" id="updates">
+        <div class="section-heading"><div><p class="eyebrow dark">From the lab</p><h2>Activity &amp; news</h2></div><a href="#contact" class="text-link">Connect with the lab <span>→</span></a></div>
+        <div class="news-grid" id="news-grid"></div>
+      </section>
+
+      <section class="research section-pad" id="research">
+        <div class="page-width">
+          <div class="research-top"><p class="eyebrow">Research portfolio</p><h2>Experimental rigor,<br /><em>practical impact.</em></h2><p>We pair material characterization, full-scale testing, and computational optimization to answer questions that matter in design offices and on construction sites.</p></div>
+          <div class="project-grid" id="project-grid"></div>
+        </div>
+      </section>
+
+      <section class="method page-width section-pad">
+        <p class="eyebrow dark">How we work</p>
+        <div class="method-grid" id="method-grid"></div>
+      </section>
+
+      <section class="people page-width section-pad" id="people">
+        <div class="section-heading"><div><p class="eyebrow dark">Our people</p><h2>Meet the team</h2></div><p class="section-note">A cross-disciplinary group of investigators, engineers, and emerging researchers.</p></div>
+        <div class="people-grid" id="people-grid"></div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="page-width contact-grid">
+          <div><p class="eyebrow">Research partnerships</p><h2>Let’s test<br />what’s possible.</h2></div>
+          <div><p>We welcome research collaborations, industry-sponsored testing, graduate enquiries, and conversations with people building a more durable future.</p><a class="button button-light" id="contact-email" href="#">Get in touch <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer page-width"><span>© <span id="year"></span> Civil Structures Research Lab</span><span>Built for inquiry. Designed for impact.</span></footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
