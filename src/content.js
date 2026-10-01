@@ -1,6 +1,16 @@
 // CONTENT EDITOR: Replace sample text and image URLs here. Copy a project,
 // news item, or person object to add another entry without changing layouts.
 // The *Content fields accept HTML for paragraphs, images, tables, and equations.
+// Vite copies these repository images into the production build and returns
+// their deployed URLs. Do not use GitHub `/blob/` URLs here: those point to
+// GitHub HTML pages rather than to image files.
+const teamPhotos = {
+  dipesh: new URL('../Contact Photos/Dipesh.png', import.meta.url).href,
+  sudeep: new URL('../Contact Photos/Sudeep.jpeg', import.meta.url).href,
+  sumi: new URL('../Contact Photos/Sumi.jpeg', import.meta.url).href,
+  ashok: new URL('../Contact Photos/Asok.jpeg', import.meta.url).href
+};
+
 export const siteContent = {
   about: {
     title: "In coordination with Bheri Babai Diversion Multipurpose Project (BBDMP)",
@@ -19,10 +29,10 @@ export const siteContent = {
     { slug: "circular-aggregates", tag: "Sustainable materials", title: "Circular aggregates for resilient infrastructure", description: "Evaluating recycled aggregates and industrial by-products in durable, locally appropriate concrete mixtures.", abstract: "Practical pathways for circular mineral resources in infrastructure construction.", methodologyContent: "<p>Mix design, durability testing, and environmental assessment examine the practical use of circular mineral resources.</p>", objectivesContent: "<p>Measure how circular mineral resources affect concrete strength, durability, and life-cycle impacts.</p>", contributionContent: "<p>Locally relevant mix-design guidance for durable concrete with reduced virgin material demand.</p>", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85" }
   ],
   people: [
-    { initials: "DT", name: "Er. Dipesh Tiwari", role: "Lab Director | Research Engineer | Concrete and Steel Structures | FEM | Construction Technology ", email: "dipesh.bbdmp2025@gmail.com", photo: "https://github.com/bridge4er-startup/CSRL/blob/main/Contact%20Photos/Dipesh.png", profile: "M.Sc. in Structural Engineering, Lead experimental and analytical research on reinforced concrete and prestressed structures, Structural Health Monitoring, Resilient Infrastructure, Finite Element Analysis and design guidance." },
-    { initials: "SB", name: "Er. Sudeep Bhusal ", role: "Research Engineer | Concrete and Steel Structures | Construction Technology ", email: "sudeepbhusal@gmail.com", photo: "https://github.com/bridge4er-startup/CSRL/blob/main/Contact%20Photos/Sudeep.jpeg", profile: "Coordinate structural testing programmes, instrumentation, and data quality across steel and reinforced-concrete projects." },
-    { initials: "SD", name: "Er. Sumi Dhakal", role: "Research Engineer | Concrete and Steel Structures | Construction Technology", email: "msumidhakal@gmail.com", photo: "https://github.com/bridge4er-startup/CSRL/blob/main/Contact%20Photos/Sumi.jpeg", profile: "Coordinate all laboratory works, develop research programs related with optimization and reliability methods for sustainable construction techniques." },
-    { initials: "AC", name: "Ashok Chaudhary", role: "Lab Technician | Materials", email: "+977 9823097170", photo: "Blank", profile: "Perform Lab Tests, Management and Maintenance Works" }
+    { initials: "DT", name: "Er. Dipesh Tiwari", role: "Lab Director | Research Engineer | Concrete and Steel Structures | FEM | Construction Technology ", email: "dipesh.bbdmp2025@gmail.com", photo: teamPhotos.dipesh, profile: "M.Sc. in Structural Engineering, Lead experimental and analytical research on reinforced concrete and prestressed structures, Structural Health Monitoring, Resilient Infrastructure, Finite Element Analysis and design guidance." },
+    { initials: "SB", name: "Er. Sudeep Bhusal ", role: "Research Engineer | Concrete and Steel Structures | Construction Technology ", email: "sudeepbhusal@gmail.com", photo: teamPhotos.sudeep, profile: "Coordinate structural testing programmes, instrumentation, and data quality across steel and reinforced-concrete projects." },
+    { initials: "SD", name: "Er. Sumi Dhakal", role: "Research Engineer | Concrete and Steel Structures | Construction Technology", email: "msumidhakal@gmail.com", photo: teamPhotos.sumi, profile: "Coordinate all laboratory works, develop research programs related with optimization and reliability methods for sustainable construction techniques." },
+    { initials: "AC", name: "Ashok Chaudhary", role: "Lab Technician | Materials", email: "+977 9823097170", photo: teamPhotos.ashok, profile: "Perform Lab Tests, Management and Maintenance Works" }
   ],
   contact: { email: "bridge4er@gmail.com" }
 };
