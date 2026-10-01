@@ -8,7 +8,8 @@ export default defineConfig({
         home: resolve(import.meta.dirname, 'index.html'),
         research: resolve(import.meta.dirname, 'research.html'),
         project: resolve(import.meta.dirname, 'project.html'),
-        contacts: resolve(import.meta.dirname, 'contacts.html')
+        contacts: resolve(import.meta.dirname, 'contacts.html'),
+        news: resolve(import.meta.dirname, 'news.html')
       }
     }
   }
