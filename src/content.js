@@ -8,7 +8,8 @@ const teamPhotos = {
   dipesh: new URL('../Contact Photos/Dipesh.png', import.meta.url).href,
   sudeep: new URL('../Contact Photos/Sudeep.jpeg', import.meta.url).href,
   sumi: new URL('../Contact Photos/Sumi.jpeg', import.meta.url).href,
-  ashok: new URL('../Contact Photos/Asok.jpeg', import.meta.url).href
+  ashok: new URL('../Contact Photos/Asok.jpeg', import.meta.url).href,
+  sumesh: new URL('../Contact Photos/Sumesh.jpeg', import.meta.url).href
 };
 
 export const siteContent = {
@@ -99,10 +100,16 @@ export const siteContent = {
         profile: "Coordinate all laboratory works, develop research programs related with optimization and reliability methods for sustainable construction techniques." },
       { initials: "AC", 
         name: "Ashok Chaudhary", 
-        role: "Lab Technician | Materials", 
+        role: "BBDMP Lab Technician | Materials", 
         email: "+977 9823097170", 
         photo: teamPhotos.ashok, 
-        profile: "Perform Lab Tests, Management and Maintenance Works" }
+        profile: "Perform Lab Tests, Management and Maintenance Works" },
+      { initials: "SKY", 
+        name: "Sumesh Kumar Yadav", 
+        role: "BBDMP Lab Technician | Materials | Concrete Technology", 
+        email: "+977 980-7784728 ", 
+        photo: teamPhotos.sumesh, 
+        profile: "Perform Lab Tests, Site Activities related to Quality Control" }
   ],
   contact: { email: "bridge4er@gmail.com" }
 };
