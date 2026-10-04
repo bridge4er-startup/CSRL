@@ -105,7 +105,7 @@ export const siteContent = {
         photo: teamPhotos.ashok, 
         profile: "Perform Lab Tests, Management and Maintenance Works" },
       { initials: "SKY", 
-        name: "Sumesh Kumar Yadav", 
+        name: "Er. Sumesh Kumar Yadav", 
         role: "BBDMP Lab Technician | Materials | Concrete Technology", 
         email: "+977 980-7784728 ", 
         photo: teamPhotos.sumesh, 
