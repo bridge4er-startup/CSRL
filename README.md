@@ -14,10 +14,16 @@ Each item in `news` is one update. Edit `date`, `type`, `title`, `image`, and `d
 
 ### Add or edit research
 
-Each item in `projects` is one research detail page. Edit the plain-text `title`, `description`, and `abstract`; the abstract automatically displays in Times New Roman at 12 pt. Use `objectivesContent`, `methodologyContent`, and `contributionContent` for richer material below it. These fields accept HTML, including multiple photographs, tables, and equations. Place each image block within the relevant field wherever it belongs in the content flow.
+Each item in `projects` is one research detail page. Edit `title` and `description`, then build the article with the ordered `report` list. There are no fixed report headings: add any number of named sections, rich content blocks, quotations, and dividers in any order. A `section` marked `lead: true` has the larger introductory type treatment. Section and content block `content` values accept HTML, including multiple photographs, tables, and equations.
 
 ```js
-methodologyContent: "<p>Testing protocol.</p><img src=\"/images/test-rig.jpg\" alt=\"Test rig\" /><table><thead><tr><th>Specimen</th><th>Load</th></tr></thead><tbody><tr><td>S1</td><td>250 kN</td></tr></tbody></table><p class=\"equation\">M = F x L</p>"
+report: [
+  { type: "section", title: "Abstract", lead: true, content: "<p>Short overview of the research.</p>" },
+  { type: "section", title: "Testing protocol", content: "<p>Testing details.</p><img src=\"/images/test-rig.jpg\" alt=\"Test rig\" /><table><thead><tr><th>Specimen</th><th>Load</th></tr></thead><tbody><tr><td>S1</td><td>250 kN</td></tr></tbody></table><p class=\"equation\">M = F x L</p>" },
+  { type: "quote", text: "A useful research insight.", attribution: "Optional source" },
+  { type: "content", content: "<h2>Any HTML heading</h2><p>Additional material can appear anywhere.</p>" },
+  { type: "divider" }
+]
 ```
 
 Use this pattern for a captioned image, or place several figures inside an `image-gallery` for a vertically stacked image sequence. This keeps figures readable at any size and lets you insert as many images as needed.

@@ -1,6 +1,8 @@
 // CONTENT EDITOR: Replace sample text and image URLs here. Copy a project,
 // news item, or person object to add another entry without changing layouts.
-// The *Content fields accept HTML for paragraphs, images, tables, and equations.
+// Rich-content fields accept HTML for paragraphs, images, tables, and equations.
+// A project's `report` is an ordered list of free-form blocks. Add `section`,
+// `content`, `quote`, and `divider` blocks in any sequence; see README.md.
 // Vite copies these repository images into the production build and returns
 // their deployed URLs. Do not use GitHub `/blob/` URLs here: those point to
 // GitHub HTML pages rather than to image files.
@@ -45,38 +47,50 @@ export const siteContent = {
        tag: "Concrete structures", 
        title: "Ductility and damage control in low-carbon reinforced concrete",
        description: "Quantifying the interaction of low-clinker binders, reinforcement detailing, and cyclic demand in structural components.", 
-       abstract: "This project develops design-ready evidence for reinforced concrete systems with reduced embodied carbon.", 
-       methodologyContent: "<p>Material characterization, reinforced-column tests, and digital image correlation are combined to connect mixture design with component-level response.</p><table><thead><tr><th>Stage</th><th>Evidence</th></tr></thead><tbody><tr><td>Materials</td><td>Strength, stiffness, and shrinkage</td></tr><tr><td>Components</td><td>Drift capacity and damage patterns</td></tr></tbody></table>", 
-       objectivesContent: "<p>Establish ductility benchmarks and damage-control guidance for reinforced concrete using lower-carbon binders.</p><ul><li>Compare critical reinforcement details.</li><li>Measure stiffness and strength retention under cyclic demand.</li></ul>", 
-       contributionContent: "<p>Practical recommendations for material selection and reinforcement detailing in low-carbon structural elements.</p><p class=\"equation\">Damage index = residual drift / peak drift</p>", 
+       report: [
+         { type: "section", title: "Abstract", lead: true, content: "<p>This project develops design-ready evidence for reinforced concrete systems with reduced embodied carbon.</p>" },
+         { type: "section", title: "Research objectives", content: "<p>Establish ductility benchmarks and damage-control guidance for reinforced concrete using lower-carbon binders.</p><ul><li>Compare critical reinforcement details.</li><li>Measure stiffness and strength retention under cyclic demand.</li></ul>" },
+         { type: "quote", text: "Lower-carbon construction must be measured not only by its footprint, but by the confidence it gives engineers at every drift level.", attribution: "Research principle" },
+         { type: "section", title: "Methodology", content: "<p>Material characterization, reinforced-column tests, and digital image correlation are combined to connect mixture design with component-level response.</p><table><thead><tr><th>Stage</th><th>Evidence</th></tr></thead><tbody><tr><td>Materials</td><td>Strength, stiffness, and shrinkage</td></tr><tr><td>Components</td><td>Drift capacity and damage patterns</td></tr></tbody></table>" },
+         { type: "section", title: "Expected contributions", content: "<p>Practical recommendations for material selection and reinforcement detailing in low-carbon structural elements.</p><p class=\"equation\">Damage index = residual drift / peak drift</p>" }
+       ],
        image: "https://github.com/bridge4er-startup/CSRL/blob/main/Project%20Works/From%20Net.png?raw=true" 
     },
     { slug: "rebar-loading", 
         tag: "Steel and rebar", 
         title: "Rebar performance under complex loading histories", 
         description: "Assessing strength, fatigue, bond, and fracture behavior across modern reinforcing steel products.", 
-        abstract: "A test programme linking mill properties to the performance of reinforced concrete assemblies.", 
-        methodologyContent: "<p>Tensile testing, bond tests, and low-cycle fatigue establish a clear chain from mill properties to reinforcement response in concrete assemblies.</p>", 
-        objectivesContent: "<p>Characterize the effects of repeated and reversing loads on reinforcement and its connection with surrounding concrete.</p>", 
-        contributionContent: "<p>A more reliable basis for selecting and detailing reinforcing steel in seismic and fatigue-critical structures.</p>", 
+        report: [
+          { type: "section", title: "Project overview", lead: true, content: "<p>A test programme linking mill properties to the performance of reinforced concrete assemblies.</p>" },
+          { type: "section", title: "Loading questions", content: "<p>Characterize the effects of repeated and reversing loads on reinforcement and its connection with surrounding concrete.</p>" },
+          { type: "section", title: "Test programme", content: "<p>Tensile testing, bond tests, and low-cycle fatigue establish a clear chain from mill properties to reinforcement response in concrete assemblies.</p>" },
+          { type: "quote", text: "Good reinforcement detailing starts with knowing how steel behaves when loading refuses to be simple." },
+          { type: "section", title: "Outcome", content: "<p>A more reliable basis for selecting and detailing reinforcing steel in seismic and fatigue-critical structures.</p>" }
+        ],
         image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85" },
     { slug: "hybrid-optimization", 
         tag: "Optimization",
         title: "Optimization of hybrid structural systems",
         description: "Using performance-based modelling to reduce material use while preserving safety, constructability, and service life.", 
-        abstract: "Parametric design methods for efficient composite steel and concrete systems.", 
-        methodologyContent: "<p>Finite element modelling, reliability analysis, and life-cycle assessment are used to test feasible hybrid system configurations.</p>", 
-        objectivesContent: "<p>Identify hybrid system configurations that reduce material intensity without compromising structural performance.</p>", 
-        contributionContent: "<p>Design workflows that reveal lower-carbon, buildable options early in the engineering process.</p>", 
+        report: [
+          { type: "section", title: "A design space for better systems", lead: true, content: "<p>Parametric design methods for efficient composite steel and concrete systems.</p>" },
+          { type: "section", title: "Research aim", content: "<p>Identify hybrid system configurations that reduce material intensity without compromising structural performance.</p>" },
+          { type: "divider" },
+          { type: "section", title: "How we investigate", content: "<p>Finite element modelling, reliability analysis, and life-cycle assessment are used to test feasible hybrid system configurations.</p>" },
+          { type: "section", title: "Design value", content: "<p>Design workflows that reveal lower-carbon, buildable options early in the engineering process.</p>" }
+        ],
         image: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=85" },
     { slug: "circular-aggregates", 
         tag: "Sustainable materials", 
         title: "Circular aggregates for resilient infrastructure", 
         description: "Evaluating recycled aggregates and industrial by-products in durable, locally appropriate concrete mixtures.", 
-        abstract: "Practical pathways for circular mineral resources in infrastructure construction.", 
-        methodologyContent: "<p>Mix design, durability testing, and environmental assessment examine the practical use of circular mineral resources.</p>", 
-        objectivesContent: "<p>Measure how circular mineral resources affect concrete strength, durability, and life-cycle impacts.</p>", 
-        contributionContent: "<p>Locally relevant mix-design guidance for durable concrete with reduced virgin material demand.</p>", 
+        report: [
+          { type: "section", title: "Why circular aggregates", lead: true, content: "<p>Practical pathways for circular mineral resources in infrastructure construction.</p>" },
+          { type: "section", title: "What we measure", content: "<p>Measure how circular mineral resources affect concrete strength, durability, and life-cycle impacts.</p>" },
+          { type: "quote", text: "The next durable concrete may begin with a material that has already served a purpose." },
+          { type: "section", title: "Method and evidence", content: "<p>Mix design, durability testing, and environmental assessment examine the practical use of circular mineral resources.</p>" },
+          { type: "section", title: "Practical contribution", content: "<p>Locally relevant mix-design guidance for durable concrete with reduced virgin material demand.</p>" }
+        ],
         image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85" }
   ],
   people: [
