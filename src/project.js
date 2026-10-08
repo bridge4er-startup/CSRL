@@ -1,5 +1,6 @@
-import { siteContent } from './content.js';
+import { getSiteContent } from './cms.js';
 import { byId, escapeHtml } from './site.js';
+const siteContent = await getSiteContent();
 const project = siteContent.projects.find((item) => item.slug === new URLSearchParams(window.location.search).get('id')) || siteContent.projects[0];
 document.title = `${project.title} | Civil Structures Research Lab`;
 const richContent = (content) => content || '<p>Content will be added shortly.</p>';

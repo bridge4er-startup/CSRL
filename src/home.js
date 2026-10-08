@@ -1,5 +1,6 @@
-import { siteContent } from './content.js';
+import { getSiteContent } from './cms.js';
 import { byId, escapeHtml } from './site.js';
+const siteContent = await getSiteContent();
 byId('hero-intro').textContent = 'Civil Structures Research Lab brings together experimental testing, simulation, and material innovation for resilient infrastructure.';
 byId('about-title').textContent = siteContent.about.title;
 byId('about-copy').textContent = siteContent.about.copy;

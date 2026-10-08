@@ -1,5 +1,6 @@
-import { siteContent } from './content.js';
+import { getSiteContent } from './cms.js';
 import { byId, escapeHtml } from './site.js';
+const siteContent = await getSiteContent();
 
 const news = siteContent.news.find((item) => item.slug === new URLSearchParams(window.location.search).get('id')) || siteContent.news[0];
 document.title = `${news.title} | Civil Structures Research Lab`;

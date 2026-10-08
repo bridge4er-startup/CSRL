@@ -1,5 +1,15 @@
 # Civil Structures Research Lab
 
+## CMS administration
+
+Run `npm run dev:all`, then open `http://localhost:5173/admin.html`. The administrator can manage homepage content, news, research, and contact personnel; set visibility and display order; upload images; and compose page blocks (heading, text, image, table, quote/annotation, divider, or two-column content). Credentials live only in `.env`, which is excluded from Git.
+
+### Production deployment
+
+The Vite frontend can be deployed on Vercel. The CMS API must be hosted on a persistent Node service (or changed to use a managed database and object storage); Vercel's serverless filesystem is not persistent enough for CMS edits/uploads. Deploy this repository's API with `npm start`, configure a persistent `DATA_FILE` path or replace the JSON store with a database, then set these server variables: `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `JWT_SECRET`, `CORS_ORIGIN`, and `DATA_FILE`.
+
+Set Vercel's `VITE_API_BASE` to the HTTPS URL of that API and redeploy the frontend. Copy `.env.example` for the complete local/production configuration list; never commit `.env`.
+
 ## Editing content
 
 All website content is in `src/content.js`. Open that file to change the homepage statement, news, research projects, team profiles, email address, and image URLs. After saving, refresh the browser. On a deployed site, commit and publish the change through your usual GitHub or Vercel workflow.
