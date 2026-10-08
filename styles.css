@@ -126,7 +126,10 @@ body { background-color:var(--paper); background-image:url("data:image/svg+xml,%
 .contact .button-light { background:#0d4970; color:#fff; }
 .site-footer { min-height:64px; }
 
+.cms-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; margin:26px 0; }
+.cms-columns > div { min-width:0; }
 @media(max-width:760px){
+  .cms-columns { grid-template-columns:1fr; gap:18px; }
   .hero-compact { min-height:380px; }
   .hero-compact .hero-content { padding-top:54px; }
   .hero h1 { font-size:39px; }
