@@ -69,12 +69,12 @@
 
 /* Free-form research report blocks. Their order is controlled in content.js. */
 .project-report { max-width:900px; }
-.report-section { padding:30px 0; border-bottom:1px solid var(--line); }
-.report-section h2 { margin:0 0 16px; color:#082d50; font:700 clamp(27px,3vw,39px)/1.12 'Source Serif 4',Georgia,serif; }
+.report-section { padding:22px 0; border-bottom:1px solid var(--line); }
+.report-section h2 { margin:0 0 9px; color:#082d50; font:700 clamp(27px,3vw,39px)/1.12 'Source Serif 4',Georgia,serif; }
 .report-section .eyebrow + h2 { margin-top:0; }
 .report-section-lead h2 { font-size:clamp(31px,3.4vw,45px); }
 .report-section-lead .rich-content { color:#1c425c; font:400 12pt/1.65 "Times New Roman",Times,serif; }
-.report-content { padding:28px 0; }
+.report-content { padding:18px 0; }
 .report-quote { margin:34px 0; padding:26px 34px 25px; border-left:4px solid #3f9cc5; background:linear-gradient(110deg,rgba(190,228,245,.62),rgba(237,247,251,.45)); }
 .report-quote blockquote { margin:0; color:#0b4268; font:600 clamp(21px,2.5vw,31px)/1.3 'Source Serif 4',Georgia,serif; }
 .report-quote blockquote::before { content:'“'; color:#2695c4; }
@@ -94,11 +94,12 @@
 .news-detail-hero { padding:44px 0 48px; background:#06223a; color:#fff; }
 .news-detail-hero .back-link { margin-bottom:26px; }
 .news-detail-hero h1 { max-width:880px; margin:0; font:700 clamp(32px,4vw,54px)/1.08 'Source Serif 4',Georgia,serif; }
-.news-story { display:grid; grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr); gap:42px; padding:46px 0 62px; }
+.news-story { display:grid; grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr); gap:30px; padding:34px 0 50px; }
 .news-story > img { width:100%; height:250px; object-fit:cover; }
 .story-copy { max-width:670px; color:#34566d; font-size:15px; line-height:1.8; }
 .story-copy p:first-child { margin-top:0; font:400 16pt/1.55 'Source Serif 4',Georgia,serif; color:#174764; }
-.story-copy h2 { margin:28px 0 12px; color:#0a3d61; font:700 26px/1.2 'Source Serif 4',Georgia,serif; }
+.story-copy p { margin:0 0 12px; }
+.story-copy h2 { margin:18px 0 7px; color:#0a3d61; font:700 26px/1.2 'Source Serif 4',Georgia,serif; }
 
 /* Reusable media blocks for news and research HTML content. */
 .rich-content figure,.story-copy figure { margin:20px 0; }

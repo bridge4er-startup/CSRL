@@ -50,7 +50,7 @@ app.use('/uploads', express.static(uploadDir));
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 4 * 1024 * 1024 } });
 
 app.get('/api/health', (_req, res) => res.json({ ok: true, storage: blobEnabled ? 'vercel-blob' : 'local-file' }));
-app.get('/api/content', async (_req, res, next) => { try { const store = await readStore(); res.json({ items: store.items.filter((item) => item.visible !== false).sort((a, b) => a.order - b.order) }); } catch (error) { next(error); } });
+app.get('/api/content', async (_req, res, next) => { try { const store = await readStore(); res.set('Cache-Control', 'no-store, max-age=0, must-revalidate'); res.json({ items: store.items.filter((item) => item.visible !== false).sort((a, b) => a.order - b.order) }); } catch (error) { next(error); } });
 app.post('/api/auth/login', async (req, res) => {
   if (!username || !password) return res.status(503).json({ error: 'Admin credentials have not been configured.' });
   const valid = req.body?.username === username && await bcrypt.compare(req.body?.password || '', await bcrypt.hash(password, 10));

@@ -12,6 +12,16 @@ const teamPhotos = {
 };
 
 export const siteContent = {
+  home: {
+    hero: {
+      eyebrow: "Concrete and Steel Structures",
+      title: "Sustainable",
+      emphasis: "construction and build resilience.",
+      copy: "Civil Structures Research Lab brings together experimental testing, simulation, and material innovation for resilient infrastructure.",
+      buttonLabel: "Explore research",
+      buttonHref: "/research.html"
+    },
+  },
   about: {
     title: "In coordination with Bheri Babai Diversion Multipurpose Project (BBDMP)",
     copy: "Primary research focus on safety, efficiency, and environmental performance of the construction industry. Our lab works are focused on material behavior, concrete technology and steel structures, sustainable infrastructures and circular economy."

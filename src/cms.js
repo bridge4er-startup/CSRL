@@ -36,7 +36,9 @@ export { blockHtml };
 export async function getSiteContent() {
   const content = clone(defaults);
   try {
-    const response = await fetch(`${apiBase}/api/content`); if (!response.ok) return content;
+    // CMS changes must be visible immediately after a refresh. The timestamp also
+    // prevents a CDN or browser from reusing an earlier public-content response.
+    const response = await fetch(`${apiBase}/api/content?updated=${Date.now()}`, { cache: 'no-store' }); if (!response.ok) return content;
     const { items } = await response.json(); const bySection = (section) => sortable(items.filter((item) => item.section === section));
     const mergeList = (name, section) => {
       const overrides = bySection(section); if (!overrides.length) return;
@@ -49,7 +51,11 @@ export async function getSiteContent() {
         return { type: 'content', content: blockHtml([block]) };
       }) }) : {}) }));
     };
-    const about = bySection('home').find((item) => item.id === 'about'); if (about) Object.assign(content.about, about.data);
+    const homeRecords = bySection('home');
+    const about = homeRecords.find((item) => item.id === 'about'); if (about) Object.assign(content.about, about.data);
+    for (const item of homeRecords) {
+      if (item.id !== 'about' && content.home[item.id]) Object.assign(content.home[item.id], item.data);
+    }
     mergeList('news', 'news'); mergeList('projects', 'research'); mergeList('people', 'people');
   } catch { /* Public site remains available when CMS is offline. */ }
   return content;
@@ -62,7 +68,8 @@ const editableBlock = (block) => {
 };
 export function defaultRecords() {
   return [
-    { id: 'about', section: 'home', data: clone(defaults.about), visible: true, order: 0 },
+    ...Object.entries(defaults.home).map(([id, data], order) => ({ id, section: 'home', data: clone(data), visible: true, order })),
+    { id: 'about', section: 'home', data: clone(defaults.about), visible: true, order: Object.keys(defaults.home).length },
     ...defaults.news.map((data, order) => ({ id: data.slug, section: 'news', data: { ...clone(data), blocks: [{ type: 'text', text: plainText(data.details) }] }, visible: true, order })),
     ...defaults.projects.map((data, order) => ({ id: data.slug, section: 'research', data: { ...clone(data), blocks: (data.report || [{ type: 'text', text: data.abstract || '' }]).flatMap(editableBlock) }, visible: true, order })),
     ...defaults.people.map((data, order) => ({ id: data.email, section: 'people', data: clone(data), visible: true, order }))
