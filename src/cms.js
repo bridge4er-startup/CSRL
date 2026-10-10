@@ -11,6 +11,8 @@ const styleAttribute = (style = {}) => {
   if (fonts[style.font]) rules.push(`font-family:${fonts[style.font]}`);
   if (/^#[0-9a-f]{3,8}$/i.test(style.color || '')) rules.push(`color:${style.color}`);
   const size = Number(style.size); if (size >= 10 && size <= 96) rules.push(`font-size:${size}px`);
+  if (style.bold) rules.push('font-weight:700');
+  if (style.italic) rules.push('font-style:italic');
   return rules.length ? ` style="${rules.join(';')}"` : '';
 };
 const paragraphs = (text = '') => escapeHtml(text).split(/\n{2,}/).map((part) => `<p>${part.replace(/\n/g, '<br />')}</p>`).join('');
@@ -21,7 +23,11 @@ const blockHtml = (blocks = []) => blocks.map((block) => {
   if (block.type === 'image') return `<figure><img src="${escapeHtml(block.url)}" alt="${escapeHtml(block.alt)}" />${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>`;
   if (block.type === 'table') { if (!block.headers) return block.html || ''; return `<div class="rich-content"><table><thead><tr>${block.headers.map((cell) => `<th>${escapeHtml(cell)}</th>`).join('')}</tr></thead><tbody>${(block.rows || []).map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
   if (block.type === 'quote') return `<blockquote${styleAttribute(block.style)}>${escapeHtml(block.text)}${block.annotation ? `<footer>${escapeHtml(block.annotation)}</footer>` : ''}</blockquote>`;
-  if (block.type === 'columns') return `<div class="cms-columns"><div${styleAttribute(block.style)}>${paragraphs(block.left)}</div><div${styleAttribute(block.style)}>${paragraphs(block.right)}</div></div>`;
+  if (block.type === 'columns') {
+    const left = Array.isArray(block.left) ? blockHtml(block.left) : paragraphs(block.left || '');
+    const right = Array.isArray(block.right) ? blockHtml(block.right) : paragraphs(block.right || '');
+    return `<div class="cms-columns"><div${styleAttribute(block.style)}>${left}</div><div${styleAttribute(block.style)}>${right}</div></div>`;
+  }
   if (block.type === 'divider') return '<hr class="report-divider" />';
   return '';
 }).join('');
