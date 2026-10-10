@@ -39,11 +39,23 @@ export async function getSiteContent() {
     // CMS changes must be visible immediately after a refresh. The timestamp also
     // prevents a CDN or browser from reusing an earlier public-content response.
     const response = await fetch(`${apiBase}/api/content?updated=${Date.now()}`, { cache: 'no-store' }); if (!response.ok) return content;
-    const { items } = await response.json(); const bySection = (section) => sortable(items.filter((item) => item.section === section));
+    const { items, initialized } = await response.json(); const bySection = (section) => sortable(items.filter((item) => item.section === section));
     const mergeList = (name, section) => {
-      const overrides = bySection(section); if (!overrides.length) return;
+      const overrides = bySection(section);
+      // Once the CMS has been initialized it is the source of truth. In
+      // particular, an intentionally empty section must remain empty instead
+      // of silently falling back to the old bundled content.
+      if (!overrides.length && !initialized) return;
       const baseline = new Map(content[name].map((item) => [item.slug || item.email, item]));
-      content[name] = overrides.map((item) => ({ ...(baseline.get(item.id) || {}), ...item.data, slug: item.data.slug || item.id, ...(item.data.blocks ? (name === 'news' ? { details: blockHtml(item.data.blocks) } : { report: item.data.blocks.map((block) => {
+      // A previous editor session may have created two records with the same
+      // public slug. Publish the most recently saved version only.
+      const unique = new Map();
+      for (const item of overrides) {
+        const key = item.data.slug || item.data.email || item.id;
+        const current = unique.get(key);
+        if (!current || String(item.updatedAt || '') >= String(current.updatedAt || '')) unique.set(key, item);
+      }
+      content[name] = [...unique.values()].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((item) => ({ ...(baseline.get(item.id) || baseline.get(item.data.slug) || baseline.get(item.data.email) || {}), ...item.data, slug: item.data.slug || item.id, ...(item.data.blocks ? (name === 'news' ? { details: blockHtml(item.data.blocks) } : { report: item.data.blocks.map((block) => {
         if (block.type === 'section') return { type: 'section', title: block.title, content: block.content, lead: block.lead };
         if (block.type === 'heading') return { type: 'section', title: block.text, content: '' };
         if (block.type === 'quote') return { type: 'quote', text: block.text, attribution: block.annotation };
